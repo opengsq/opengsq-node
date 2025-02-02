@@ -25,7 +25,8 @@
   },
   "scripts": {
     "build": "tsc",
-    "build:docs": "npm run build & api-extractor run --local & api-documenter markdown -i temp -o docs/api",
+    "build:api": "npm run build & api-extractor run --local & api-documenter markdown -i temp -o docs/api",
+    "docfx": "docfx docs/docfx.json --serve",
     "prepublishOnly": "npm run build",
     "lint": "eslint ./src",
     "lint:fix": "eslint ./src --fix",
