@@ -1,0 +1,13 @@
+.DS_Store
+node_modules
+/dist
+/package
+.env
+.env.*
+!.env.example
+
+# jest
+/coverage
+
+# api-extractor
+/temp

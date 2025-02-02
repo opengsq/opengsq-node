@@ -1,0 +1,40 @@
+{
+  "$schema": "https://raw.githubusercontent.com/dotnet/docfx/main/schemas/docfx.schema.json",
+  "build": {
+    "content": [
+      {
+        "files": [
+          "**/*.{md,yml}"
+        ],
+        "exclude": [
+          "_site/**"
+        ]
+      }
+    ],
+    "resource": [
+      {
+        "files": [
+          "images/**"
+        ]
+      }
+    ],
+    "sitemap": {
+      "baseUrl": "https://node.opengsq.com",
+      "priority": 0.5,
+      "changefreq": "daily"
+    },
+    "output": "_site",
+    "template": [
+      "default",
+      "modern"
+    ],
+    "globalMetadata": {
+      "_appName": "OpenGSQ Node",
+      "_appTitle": "OpenGSQ Node",
+      "_enableSearch": true,
+      "_appLogoPath": "images/logo.png",
+      "_appFaviconPath": "images/favicon.ico",
+      "pdf": true
+    }
+  }
+}
