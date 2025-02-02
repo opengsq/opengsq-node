@@ -1,11 +1,11 @@
 # OpenGSQ Node Library
 
-![Documentation](https://img.shields.io/badge/docs-typedoc-blue)
 [![Node.js Build](https://github.com/opengsq/opengsq-node/actions/workflows/node-build.yml/badge.svg)](https://github.com/opengsq/opengsq-node/actions/workflows/node-build.yml)
 ![NPM Type Definitions](https://img.shields.io/npm/types/%40opengsq%2Fopengsq-node)
 [![NPM Version](https://img.shields.io/npm/v/%40opengsq%2Fopengsq-node)](https://www.npmjs.com/package/@opengsq/opengsq-node)
 ![NPM Downloads](https://img.shields.io/npm/dw/%40opengsq%2Fopengsq-node)
 ![NPM Downloads](https://img.shields.io/npm/d18m/%40opengsq%2Fopengsq-node)
+![Documentation](https://img.shields.io/badge/docs-typedoc-blue)
 [![GitHub license](https://img.shields.io/github/license/opengsq/opengsq-node)](https://github.com/opengsq/opengsq-node/blob/main/LICENSE)
 
 The OpenGSQ Node library provides a convenient way to query servers from applications written in the TypeScript language.

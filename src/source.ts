@@ -1,7 +1,7 @@
 import * as dgram from 'dgram';
 import * as crc32 from 'crc-32';
 import { BufferReader } from './lib/buffer-reader';
-import type { ServerInfo, PlayerInfo } from './interfaces/source.interface';
+import type { SourceServerInfo, SourcePlayerInfo } from './interfaces/source.interface';
 
 /**
  * A class for querying Source game servers (e.g., GoldSource, Source Engine) using the A2S protocol.
@@ -9,9 +9,8 @@ import type { ServerInfo, PlayerInfo } from './interfaces/source.interface';
  *
  * @example
  * const source = new Source('127.0.0.1', 27015);
- * source.getInfo().then(info =\> console.log(info));
- *
- * @public
+ * const info = await source.getInfo();
+ * console.log(info);
  */
 export default class Source {
     private host: string;
@@ -39,7 +38,7 @@ export default class Source {
      *
      * @returns A promise that resolves with the server information.
      */
-    public getInfo(): Promise<ServerInfo> {
+    public getInfo(): Promise<SourceServerInfo> {
         return new Promise((resolve, reject) => this.get(0x54, resolve, reject));
     }
 
@@ -48,7 +47,7 @@ export default class Source {
      *
      * @returns A promise that resolves with an array of player information.
      */
-    public getPlayers(): Promise<PlayerInfo[]> {
+    public getPlayers(): Promise<SourcePlayerInfo[]> {
         return new Promise((resolve, reject) => this.get(0x55, resolve, reject));
     }
 
@@ -287,8 +286,8 @@ export default class Source {
      * @param reader - The BufferReader instance containing the response data.
      * @returns The parsed server information.
      */
-    private parseInfoResponse(reader: BufferReader): ServerInfo {
-        const info: ServerInfo = {
+    private parseInfoResponse(reader: BufferReader): SourceServerInfo {
+        const info: SourceServerInfo = {
             protocol: reader.readUint8(),
             name: reader.readString(),
             map: reader.readString(),
@@ -340,8 +339,8 @@ export default class Source {
      * @param reader - The BufferReader instance containing the response data.
      * @returns The parsed server information.
      */
-    private parseInfoObsoleteResponse(reader: BufferReader): ServerInfo {
-        const info: ServerInfo = {
+    private parseInfoObsoleteResponse(reader: BufferReader): SourceServerInfo {
+        const info: SourceServerInfo = {
             address: reader.readString(), // IP address and port of the server.
             name: reader.readString(), // Server name
             map: reader.readString(), // Current map
@@ -350,11 +349,11 @@ export default class Source {
             players: reader.readUint8(), // Number of players
             maxPlayers: reader.readUint8(), // Maximum players
             protocol: reader.readUint8(), // Protocol version
-            bots: 0, // Bots (not present in Obsolete GoldSource, default to 0)
+            bots: 0, // Bots (default to 0)
             serverType: String.fromCharCode(reader.readUint8()), // Server type: 'D', 'L', or 'P'
             environment: String.fromCharCode(reader.readUint8()), // Environment: 'L' or 'W'
             visibility: reader.readUint8(), // Visibility: 0 (public) or 1 (private)
-            vac: 0, // VAC (not present in Obsolete GoldSource, default to 0)
+            vac: 0, // VAC (default to 0)
         };
 
         // Check if the server is running a mod
@@ -383,11 +382,11 @@ export default class Source {
      * @param reader - The BufferReader instance containing the response data.
      * @returns An array of player information.
      */
-    private parsePlayerResponse(reader: BufferReader): PlayerInfo[] {
+    private parsePlayerResponse(reader: BufferReader): SourcePlayerInfo[] {
         const playerCount = reader.readUint8();
         if (this.debug) console.log("[DEBUG] Player Count:", playerCount);
 
-        const players: PlayerInfo[] = [];
+        const players: SourcePlayerInfo[] = [];
 
         for (let i = 0; i < playerCount; i++) {
             const index = reader.readUint8();
