@@ -4,7 +4,7 @@
   "description": "Node.js library designed for querying game servers.",
   "repository": {
     "type": "git",
-    "url": "https://github.com/opengsq/opengsq-node.git"
+    "url": "git+https://github.com/opengsq/opengsq-node.git"
   },
   "homepage": "https://node.opengsq.com",
   "bugs": {
@@ -18,7 +18,7 @@
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "bin": {
-    "opengsq": "./dist/cli.js"
+    "opengsq": "dist/cli.js"
   },
   "engines": {
     "node": ">=8.0"
