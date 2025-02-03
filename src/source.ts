@@ -358,16 +358,18 @@ export default class Source {
 
         // Check if the server is running a mod
         if (reader.readUint8() === 1) {
-            info.mod = {
-                link: reader.readString(), // Mod website URL
-                downloadLink: reader.readString(), // Mod download URL
-            };
-
+            const link = reader.readString(); // Mod website URL
+            const downloadLink = reader.readString(); // Mod download URL
             reader.skip(1); // NULL byte (0x00)
-            info.mod.version = reader.readUint32(); // Mod version
-            info.mod.size = reader.readUint32(); // Mod size in bytes
-            info.mod.type = reader.readUint8(); // Mod type: 0 (single/multiplayer), 1 (multiplayer only)
-            info.mod.dll = reader.readUint8(); // Mod DLL: 0 (Half-Life DLL), 1 (custom DLL)
+
+            info.mod = {
+                link,
+                downloadLink,
+                version: reader.readUint32(), // Mod version
+                size: reader.readUint32(), // Mod size in bytes
+                type: reader.readUint8(), // Mod type: 0 (single/multiplayer), 1 (multiplayer only)
+                dll: reader.readUint8(), // Mod DLL: 0 (Half-Life DLL), 1 (custom DLL)
+            };
         }
 
         info.vac = reader.readUint8();

@@ -127,38 +127,38 @@ export interface SourceServerInfo {
      */
     mod?: {
         /**
-         * URL to mod website (if isMod is true).
+         * URL to mod website.
          */
-        link?: string;
+        link: string;
 
         /**
-         * URL to download the mod (if isMod is true).
+         * URL to download the mod.
          */
-        downloadLink?: string;
+        downloadLink: string;
 
         /**
-         * Version of mod installed on server (if isMod is true).
+         * Version of mod installed on server.
          */
-        version?: number;
+        version: number;
 
         /**
-         * Space (in bytes) the mod takes up (if isMod is true).
+         * Space (in bytes) the mod takes up.
          */
-        size?: number;
+        size: number;
 
         /**
          * Type of mod:
          * - 0 for single and multiplayer mod
          * - 1 for multiplayer-only mod
          */
-        type?: number;
+        type: number;
 
         /**
          * Whether mod uses its own DLL:
          * - 0 if it uses the Half-Life DLL
          * - 1 if it uses its own DLL
          */
-        dll?: number;
+        dll: number;
     };
 }
 
