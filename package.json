@@ -1,5 +1,5 @@
 {
-  "name": "opengsq-node",
+  "name": "@opengsq/opengsq-node",
   "version": "0.0.1",
   "description": "Node.js library designed for querying game servers.",
   "repository": {

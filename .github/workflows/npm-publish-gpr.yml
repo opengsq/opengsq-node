@@ -5,7 +5,7 @@ name: Node.js Package (GPR)
 
 on:
   release:
-    types: [created]
+    types: [published]
 
 jobs:
   build:

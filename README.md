@@ -15,15 +15,15 @@ The OpenGSQ Node library provides a convenient way to query servers from applica
 The library supports a wide range of protocols. Here are some examples:
 
 ```ts
-import { Source } from '@opengsq/opengsq';
+import { Source } from '@opengsq/opengsq-node';
 ```
 
 ## Installation
 
-The recommended installation method is using [pip](http://pip-installer.org/):
+To install `@opengsq/opengsq-node`, run the following command in your project directory:
 
 ```sh
-npm install -S @opengsq/opengsq
+npm install -S @opengsq/opengsq-node
 ```
 
 ## Usage
@@ -31,7 +31,7 @@ npm install -S @opengsq/opengsq
 Here’s an example of how to query a server using the Source protocol:
 
 ```ts
-import { Source } from "@opengsq/opengsq";
+import { Source } from "@opengsq/opengsq-node";
 
 async function main() {
     const source = new Source("91.216.250.10", 27015);
