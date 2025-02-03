@@ -1,10 +1,8 @@
 /**
  * Represents the server information returned by the A2S_INFO query.
  * This interface supports both Source Engine and Obsolete GoldSource responses.
- *
- * @public
  */
-export interface ServerInfo {
+export interface SourceServerInfo {
     /**
      * Protocol version used by the server.
      */
@@ -166,10 +164,8 @@ export interface ServerInfo {
 
 /**
  * Represents player information returned by the A2S_PLAYER query.
- *
- * @public
  */
-export interface PlayerInfo {
+export interface SourcePlayerInfo {
     /**
      * Index of the player.
      */

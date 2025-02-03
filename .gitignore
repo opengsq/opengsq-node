@@ -8,6 +8,3 @@ node_modules
 
 # jest
 /coverage
-
-# api-extractor
-/temp
