@@ -1,2 +1,2 @@
 export { default as Source } from "./source";
-export { SourceServerInfo, SourcePlayerInfo } from "./interfaces/source.interface";
+export { SourceParams, SourceServerInfo, SourcePlayerInfo } from "./interfaces/source.interface";

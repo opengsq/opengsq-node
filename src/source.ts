@@ -1,7 +1,7 @@
 import * as dgram from 'dgram';
 import * as crc32 from 'crc-32';
 import { BufferReader } from './lib/buffer-reader';
-import type { SourceServerInfo, SourcePlayerInfo } from './interfaces/source.interface';
+import type { SourceParams, SourceServerInfo, SourcePlayerInfo } from './interfaces/source.interface';
 
 /**
  * A class for querying Source game servers (e.g., GoldSource, Source Engine) using the A2S protocol.
@@ -21,16 +21,17 @@ export default class Source {
     /**
      * Creates a new Source server query instance.
      *
-     * @param host - The IP address or hostname of the server.
-     * @param port - The port number of the server.
-     * @param timeout - The timeout duration (in milliseconds) for server queries. Default is 5000.
-     * @param debug - Enables debug logging if true. Default is false.
+     * @param params - A JSON object containing the configuration for the Source instance.
+     * @param params.host - The IP address or hostname of the server.
+     * @param params.port - The port number of the server.
+     * @param params.timeout - The timeout duration (in milliseconds) for server queries. Default is 5000.
+     * @param params.debug - Enables debug logging if true. Default is false.
      */
-    constructor(host: string, port: number, timeout = 5000, debug = false) {
-        this.host = host;
-        this.port = port;
-        this.timeout = timeout;
-        this.debug = debug;
+    constructor(params: SourceParams) {
+        this.host = params.host;
+        this.port = params.port;
+        this.timeout = params.timeout ?? 5000;
+        this.debug = params.debug ?? false;
     }
 
     /**
@@ -436,7 +437,12 @@ export default class Source {
 /* istanbul ignore next */
 if (require.main === module) {
     const debug = false;
-    const source = new Source('91.216.250.10', 27015, 5000, debug); // Multi-packet Response (Source)
+    const source = new Source({
+        host: '91.216.250.10',
+        port: 27015,
+        timeout: 5000,
+        debug
+    }); // Multi-packet Response (Source)
     // const source = new Source('46.174.54.71', 27015, 5000, debug); // Multi-packet Response (Source), Compression Detected
     // const source = new Source('46.174.54.237', 27015, 5000, debug); // Obsolete Response - No Mod
     // const source = new Source('182.92.213.179', 27015, 5000, debug); // Obsolete Response - Mod

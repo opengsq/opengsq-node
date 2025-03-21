@@ -1,3 +1,29 @@
+export interface SourceParams {
+    /**
+     * The IP address or hostname of the server.
+     * This is a required property.
+     */
+    host: string;
+
+    /**
+     * The port number of the server.
+     * This is a required property.
+     */
+    port: number;
+
+    /**
+     * The timeout duration (in milliseconds) for server queries.
+     * If not provided, the default value is 5000.
+     */
+    timeout?: number;
+
+    /**
+     * Enables debug logging if set to `true`.
+     * If not provided, the default value is `false`.
+     */
+    debug?: boolean;
+}
+
 /**
  * Represents the server information returned by the A2S_INFO query.
  * This interface supports both Source Engine and Obsolete GoldSource responses.
